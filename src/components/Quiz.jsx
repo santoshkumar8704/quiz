@@ -3,6 +3,7 @@ import Question from "../assets/question";
 import COMPLETEDLOGO from "../assets/quiz-complete.png";
 import QuestionTimer from "./QuestionTimer";
 import Answers from "./Answers";
+import Questionary from "./Questionary";
 
 export default function Quiz() {
   const [userAnswers, setUserAnswers] = useState([]);
@@ -44,20 +45,14 @@ export default function Quiz() {
 
   return (
     <div id="quiz">
-      <div id="question">
-        <QuestionTimer
-          key={CurrentlyActiveQuestion}
-          timeout={10000}
-          onTimeOut={handleTimeOut}
-        />
-        <h2>{Question[CurrentlyActiveQuestion].text}</h2>
-        <Answers key={CurrentlyActiveQuestion}
-          answers={Question[CurrentlyActiveQuestion].answers}
-          selectedAnswer={userAnswers[userAnswers.length - 1]}
-          answerState={answerState}
-          onSelectAnswer = {handleAnswerClick}
-        />
-      </div>
+      <Questionary key={CurrentlyActiveQuestion}
+        answers={Question[CurrentlyActiveQuestion].answers}
+        selectedAnswer={userAnswers[userAnswers.length - 1]}
+        answerState={answerState}
+        onSelectAnswer = {handleAnswerClick}
+        questiontext={Question[CurrentlyActiveQuestion].text}
+        onSkipAnswer={handleTimeOut}
+      />
     </div>
   );
 }
