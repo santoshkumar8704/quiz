@@ -1,13 +1,14 @@
+
 import Quiz from "./components/Quiz";
 import Header from "./components/header";
 
 function App() {
     return(
         <>
-            <Header />
+           <Header />
             <main>
                 <Quiz />
-            </main>
+            </main> 
         </>
 
     )
